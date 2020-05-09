@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 /**
  * A wrapper for a <code>List&lt;Token&gt;</code>
  * 
- * @author Iikka Hauhio
+ * @author Valio Valtokari
+ * Original author Iikka Hauhio
  *
  */
 public class TokenList {
