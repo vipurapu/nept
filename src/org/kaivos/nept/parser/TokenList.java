@@ -66,7 +66,26 @@ public class TokenList {
 	public Token seek() {
 		return tokens.get(index);
 	}
-	
+	/**
+	 * Look back to avoid temporary variables.
+	 * Equivalent to <code>seekPrevious(2)</code>
+	 *
+	 * @return The previous token
+	 * @throws IndexOutOfBoundsException if you do this when the index is < 2
+	 */
+	public Token seekPrevious() {
+		return tokens.get(index - 2);
+	}
+	/**
+	 * Look back to avoid temporary variables. Returns a String.
+	 * Equivalent to <code>seekPrevious(2)</code>
+	 *
+	 * @return The previous token as String
+	 * @throws IndexOutOfBoundsException if you do this when the index is < 2
+	 */
+	public String seekPreviousString() {
+		return tokens.get(index - 2).getToken();
+	}
 	/**
 	 * Lookahead
 	 * 
@@ -77,7 +96,26 @@ public class TokenList {
 	public Token seek(int n) {
 		return tokens.get(index+n);
 	}
-	
+	/**
+	 * Look back to avoid temporary variables.
+	 *
+	 * @param n seeks back n number of tokens
+	 * @return Token at index - n
+	 * @throws IndexOutOfBoundsException if you go out of bounds
+	 */
+	public Token seekPrevious(int n) {
+		return tokens.get(index-n);
+	}
+	/**
+	 * Look back to avoid temporary variables. Returns a String.
+	 *
+	 * @param n seeks back n number of tokens
+	 * @return Token at index - n as String
+	 * @throws IndexOutOfBoundsException if you go out of bounds
+	 */
+	public String seekPreviousString(int n) {
+		return tokens.get(index-n).getToken();
+	}
 	/**
 	 * Lookahead, returns the next token as a string from the list, equivalent to <code>seekString(0)</code>
 	 * 
@@ -98,7 +136,6 @@ public class TokenList {
 	public String seekString(int n) {
 		return tokens.get(index+n).getToken();
 	}
-	
 	/**
 	 * Are there any tokens left?
 	 * 
@@ -117,7 +154,6 @@ public class TokenList {
 	public boolean has(int number) {
 		return index + number-1 < tokens.size();
 	}
-	
 	/**
 	 * Compares the next token to some keywords
 	 * 
@@ -142,7 +178,6 @@ public class TokenList {
 			throw new ParsingException(expected(keyword), next);
 		return next;
 	}
-
 	/**
 	 * Compares the next token to some keywords. If one of them
 	 * matches, it will be accepted.
@@ -189,7 +224,6 @@ public class TokenList {
 		tokens.add(token);
 		return this;
 	}
-
 	/**
 	 * Returns the tokens as a List
 	 * @return list
