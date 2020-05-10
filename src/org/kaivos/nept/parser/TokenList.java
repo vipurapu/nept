@@ -28,7 +28,7 @@ public class TokenList {
 	}
 
 	/**
-	 * Returns the next token from the list and increases the index counter
+	 * Increases the index counter
 	 * 
 	 * @throws IndexOutOfBoundsException If no tokens left
 	 */
@@ -37,7 +37,17 @@ public class TokenList {
 		if (index >= tokens.size())
 			throw new IndexOutOfBoundsException();
 	}
-	
+	/**
+	 * Decreases the index counter
+	 * 
+	 * @throws IndexOutOfBoundsException If index counter is under 0
+	 */
+	public void shiftBack() {
+		index--;
+		if (index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
 	/**
 	 * Returns the next token from the list and increases the index counter
 	 * 
